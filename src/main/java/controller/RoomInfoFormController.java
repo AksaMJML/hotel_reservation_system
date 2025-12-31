@@ -52,12 +52,14 @@ public class RoomInfoFormController {
     void btnReloadOnAction(ActionEvent event) {
 
         colRoomId.setCellValueFactory(new PropertyValueFactory<>("roomId"));
-        colRoomtype.setCellValueFactory(new PropertyValueFactory<>("roomType"));
+        colRoomtype.setCellValueFactory(new PropertyValueFactory<>("type"));
         colPrice.setCellValueFactory(new PropertyValueFactory<>("pricePerNight"));
         colMaxGuests.setCellValueFactory(new PropertyValueFactory<>("maxGuest"));
         colAvailability.setCellValueFactory(new PropertyValueFactory<>("availability"));
         colDescription.setCellValueFactory(new PropertyValueFactory<>("description"));
         colFloor.setCellValueFactory(new PropertyValueFactory<>("floor"));
+
+        tblRoomInfo.setItems(roomInfoDto);
     }
 
 }
