@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import model.dto.RoomInfoDTO;
 
 public class RoomInfoFormController {
@@ -45,11 +46,18 @@ public class RoomInfoFormController {
     private TableColumn<?, ?> colRoomtype;
 
     @FXML
-    private TableView<?> tblRoomInfo;
+    private TableView<RoomInfoDTO> tblRoomInfo;
 
     @FXML
     void btnReloadOnAction(ActionEvent event) {
 
+        colRoomId.setCellValueFactory(new PropertyValueFactory<>("roomId"));
+        colRoomtype.setCellValueFactory(new PropertyValueFactory<>("roomType"));
+        colPrice.setCellValueFactory(new PropertyValueFactory<>("pricePerNight"));
+        colMaxGuests.setCellValueFactory(new PropertyValueFactory<>("maxGuest"));
+        colAvailability.setCellValueFactory(new PropertyValueFactory<>("availability"));
+        colDescription.setCellValueFactory(new PropertyValueFactory<>("description"));
+        colFloor.setCellValueFactory(new PropertyValueFactory<>("floor"));
     }
 
 }
