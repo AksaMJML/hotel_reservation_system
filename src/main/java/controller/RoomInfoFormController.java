@@ -68,6 +68,16 @@ public class RoomInfoFormController {
                 roomInfoDto.add(roomInfoDTO);
             }
 
+            colRoomId.setCellValueFactory(new PropertyValueFactory<>("roomId"));
+            colRoomtype.setCellValueFactory(new PropertyValueFactory<>("type"));
+            colPrice.setCellValueFactory(new PropertyValueFactory<>("pricePerNight"));
+            colMaxGuests.setCellValueFactory(new PropertyValueFactory<>("maxGuest"));
+            colAvailability.setCellValueFactory(new PropertyValueFactory<>("availability"));
+            colDescription.setCellValueFactory(new PropertyValueFactory<>("description"));
+            colFloor.setCellValueFactory(new PropertyValueFactory<>("floor"));
+
+            tblRoomInfo.setItems(roomInfoDto);
+
         } catch (SQLException  e) {
             throw new RuntimeException(e);
         }
