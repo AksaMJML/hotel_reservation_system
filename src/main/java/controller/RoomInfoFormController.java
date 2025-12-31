@@ -11,6 +11,8 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import model.dto.RoomInfoDTO;
 
+import java.sql.*;
+
 public class RoomInfoFormController {
 
     ObservableList<RoomInfoDTO> roomInfoDto = FXCollections.observableArrayList(
@@ -49,17 +51,19 @@ public class RoomInfoFormController {
     private TableView<RoomInfoDTO> tblRoomInfo;
 
     @FXML
-    void btnReloadOnAction(ActionEvent event) {
+    void btnReloadOnAction(ActionEvent event) throws SQLException {
 
-        colRoomId.setCellValueFactory(new PropertyValueFactory<>("roomId"));
-        colRoomtype.setCellValueFactory(new PropertyValueFactory<>("type"));
-        colPrice.setCellValueFactory(new PropertyValueFactory<>("pricePerNight"));
-        colMaxGuests.setCellValueFactory(new PropertyValueFactory<>("maxGuest"));
-        colAvailability.setCellValueFactory(new PropertyValueFactory<>("availability"));
-        colDescription.setCellValueFactory(new PropertyValueFactory<>("description"));
-        colFloor.setCellValueFactory(new PropertyValueFactory<>("floor"));
+        try {
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/hotel_reservation_system/", "root", "741897");
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM rooms");
+            ResultSet resultSet = preparedStatement.executeQuery();
 
-        tblRoomInfo.setItems(roomInfoDto);
+            while (resultSet.next()) {
+                System.out.println(resultSet.getString(1));
+            }
+        } catch (SQLException  e) {
+            throw new RuntimeException(e);
+        }
     }
 
 }
