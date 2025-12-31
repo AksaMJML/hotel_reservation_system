@@ -54,12 +54,13 @@ public class RoomInfoFormController {
     void btnReloadOnAction(ActionEvent event) throws SQLException {
 
         try {
-            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/hotel_reservation_system/", "root", "741897");
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/hotel_reservation_system", "root", "741897");
             PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM rooms");
             ResultSet resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {
                 System.out.println(resultSet.getString(1));
+                System.out.println(resultSet);
             }
         } catch (SQLException  e) {
             throw new RuntimeException(e);
