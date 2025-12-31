@@ -15,11 +15,16 @@ import java.sql.*;
 
 public class RoomInfoFormController {
 
-    ObservableList<RoomInfoDTO> roomInfoDto = FXCollections.observableArrayList();
+    ObservableList<RoomInfoDTO> roomInfoDto = FXCollections.observableArrayList(
+
+    );
+
 
 
     @FXML
     private Button btnReload;
+
+
 
     @FXML
     private TableColumn<?, ?> colAvailability;
@@ -48,6 +53,8 @@ public class RoomInfoFormController {
 
     @FXML
     void btnReloadOnAction(ActionEvent event) throws SQLException {
+
+        roomInfoDto.clear();
 
         try {
             Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/hotel_reservation_system", "root", "741897");
