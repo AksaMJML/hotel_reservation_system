@@ -13,7 +13,7 @@ public class RoomInfoDTO {
 
     private String roomId;
     private String type;
-    private String pricePerNight;
+    private double pricePerNight;
     private int maxGuest;
     private boolean availability;
     private String description;

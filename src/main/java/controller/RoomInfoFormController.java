@@ -15,12 +15,7 @@ import java.sql.*;
 
 public class RoomInfoFormController {
 
-    ObservableList<RoomInfoDTO> roomInfoDto = FXCollections.observableArrayList(
-            new RoomInfoDTO("R001","A/C","500.0",2,true,"heloo java here",3),
-            new RoomInfoDTO("R002","Non A/C","2500.0",4,false," java here1",4),
-            new RoomInfoDTO("R003","A/C","3500.0",1,true," java here2",3),
-            new RoomInfoDTO("R004","Non A/C","4500.0",5,false," java here3",3)
-            );
+    ObservableList<RoomInfoDTO> roomInfoDto = FXCollections.observableArrayList();
 
 
     @FXML
@@ -60,7 +55,12 @@ public class RoomInfoFormController {
 
             while (resultSet.next()) {
                 System.out.println(resultSet.getString(1));
-                System.out.println(resultSet);
+                System.out.println(resultSet.getString(2));
+                System.out.println(resultSet.getString(3));
+                System.out.println(resultSet.getString(4));
+                System.out.println(resultSet.getString(5));
+                System.out.println(resultSet.getString(6));
+                System.out.println(resultSet.getString(7));
             }
         } catch (SQLException  e) {
             throw new RuntimeException(e);
