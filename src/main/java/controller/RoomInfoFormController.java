@@ -44,6 +44,7 @@ public class RoomInfoFormController {
 
     @FXML
     private TableView<RoomInfoDTO> tblRoomInfo;
+    private ResultSet resultSet;
 
     @FXML
     void btnReloadOnAction(ActionEvent event) throws SQLException {
@@ -54,14 +55,19 @@ public class RoomInfoFormController {
             ResultSet resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {
-                System.out.println(resultSet.getString(1));
-                System.out.println(resultSet.getString(2));
-                System.out.println(resultSet.getString(3));
-                System.out.println(resultSet.getString(4));
-                System.out.println(resultSet.getString(5));
-                System.out.println(resultSet.getString(6));
-                System.out.println(resultSet.getString(7));
+                RoomInfoDTO roomInfoDTO = new RoomInfoDTO(
+                        resultSet.getString("room_id"),
+                        resultSet.getString("type"),
+                        resultSet.getDouble("price_per_night"),
+                        resultSet.getInt("max_guests"),
+                        resultSet.getBoolean("availability"),
+                        resultSet.getString("description"),
+                        resultSet.getInt("floor")
+                );
+
+                roomInfoDto.add(roomInfoDTO);
             }
+
         } catch (SQLException  e) {
             throw new RuntimeException(e);
         }
